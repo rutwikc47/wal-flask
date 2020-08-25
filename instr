@@ -1,0 +1,5 @@
+docker image build -t walmart-flask .
+docker run -d walmart-flask
+access the app via
+docker container ls
+docker exec -it <container-id> curl http://localhost:8080/healthz
