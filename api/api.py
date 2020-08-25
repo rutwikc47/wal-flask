@@ -2,11 +2,13 @@ from flask import Blueprint, request, jsonify
 from app.selectors import *
 import flask
 import json
+import timeit
 
 bp = Blueprint('api', __name__, url_prefix='/')
 
 @bp.route('/healthz', methods=('GET',))
 def health_check():
+    start_time = timeit.default_timer()
 
     # Get the status code and up time
     dataDump = get_health_data()
@@ -28,8 +30,7 @@ def health_check():
         'status': status,
         'version': flask.__version__,
         'uptime': "up since " + str(dataDump[1]),
-        'cpu_usage': str(dataDump[2]),
-        'ram_usage': str(dataDump[3])
+        'execution_time': round(timeit.default_timer() - start_time, 4)
     }
     return json.dumps(results)
 
