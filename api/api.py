@@ -20,12 +20,16 @@ def health_check():
         status = "INVALID"
     elif status_code == 400:
         status = "NOTFOUND"
+    else:
+        status = "UNKNOWN"
 
     # Create a object of data (using flask version here as the dummy app version)
     results = {
         'status': status,
         'version': flask.__version__,
-        'uptime': "up since " + str(dataDump[1])
+        'uptime': "up since " + str(dataDump[1]),
+        'cpu_usage': str(dataDump[2]),
+        'ram_usage': str(dataDump[3])
     }
     return json.dumps(results)
 
