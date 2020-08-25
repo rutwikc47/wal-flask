@@ -22,11 +22,8 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Testing Flask application
-
     # Runs a set of commands using the runners shell
-    - name: Python Pytest Github Action
+    - name: Test Walmart Flask App
       uses: fylein/python-pytest-github-action@v2
       with:
         args: pip install -r requirements.txt && pytest
