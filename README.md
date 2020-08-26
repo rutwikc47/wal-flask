@@ -6,7 +6,7 @@
 ### Step 3:- Access the container id by using the command
 * docker container ls
 ### Step 4:- Execute the curl get command to see the health results of the application
-* docker exec -it <container-id> curl http://localhost:8080/healthz where <container-id> is the id which can be accessed by running step 3
+* docker exec -it #container-id# curl http://localhost:8080/healthz where #container-id# is the id which can be accessed by running step 3
 
 #### The Extra Endpoint I added is execution_time which can be used to figure out if the server is loaded or not or if there is some internal issue causing longer execution times, using which the load balancer can route the requests to other server 
 
